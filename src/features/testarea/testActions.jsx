@@ -1,14 +1,14 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './testConstants.jsx'
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './testConstants'
 
 export const incrementCounter = () => {
-	return (
+	return {
 		type: INCREMENT_COUNTER
-	)
+	}
 }
 
 export const decrementCounter = () => {
-	return (
+	return {
 		type: DECREMENT_COUNTER
-	)
+	}
 }
 
