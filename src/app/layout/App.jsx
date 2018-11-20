@@ -7,7 +7,7 @@ import EventForm from '../../features/event/EventForm/EventForm';
 import SettingsDashboad from '../../features/user/Settings/SettingsDashboard';
 import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage';
 import PeopleDashboard from '../../features/user/PeopleDashboard/PeopleDashboard';
-import EventDetailedPage from '../../features/event/EventDetailed/EventDetailed';
+import EventDetailedPage from '../../features/event/EventDetailed/EventDetailedPage';
 import HomePage from '../../features/home/HomePage';
 import TestComponent from '../../features/testarea/TestComponent';
 
