@@ -5,6 +5,7 @@ import cuid from 'cuid'
 import { Segment, Form, Button, Grid, Header } from 'semantic-ui-react'
 import { createEvent, updateEvent } from '../eventActions'
 import TextInput from '../../../app/common/form/TextInput'
+import TextArea from '../../../app/common/form/TextArea'
 
 const emptyEvent = {
 	title: '',
@@ -65,7 +66,7 @@ class EventForm extends Component {
 						<Header sub color='teal' content='Event Details' />
 						<Form onSubmit={this.onFormSubmit}>
 							<Field name='title' type='text' component={TextInput} placeholder='Give your event a name' />
-							<Field name='category' type='text' component={TextInput} placeholder='What is your event about' />
+							<Field name='category' type='text' rows={3} component={TextArea} placeholder='What is your event about' />
 							<Field name='description' type='text' component={TextInput} placeholder='Tell us about your event' />
 							<Header sub color='teal' content='Event location details' />
 							<Field name='city' type='text' component={TextInput} placeholder='Event City' />
