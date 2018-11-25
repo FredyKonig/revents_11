@@ -19,20 +19,14 @@ const emptyEvent = {
 const mapState = (state, ownProps) => {
 	const eventId = ownProps.match.params.id;
 
-	let event = {
-		title: '',
-		date: '',
-		city: '',
-		venue: '',
-		hostedBy: ''
-	}
+	let event = {};
 
 	if (eventId && state.events.length > 0) {
 		event = state.events.filter(event => event.id === eventId)[0];
 	}
 
 	return {
-		event
+		initialValues: event
 	}
 }
 
@@ -52,16 +46,17 @@ const category = [
 
 class EventForm extends Component {
 
-	onFormSubmit = (evt) => {
-		evt.preventDefault();
-		if (this.state.event.id) {
-			this.props.updateEvent(this.state.event);
+	onFormSubmit = values => {
+
+		if (this.props.initialValues.id) {
+			this.props.updateEvent(values);
 			this.props.history.goBack();
 		} else {
 			const newEvent = {
-				...this.state.event,
+				...values,
 				id: cuid(),
-				hostPhotoURL: '/assets/user.png'
+				hostPhotoURL: '/assets/user.png',
+				hosstedBy: 'Bob'
 			}
 			this.props.createEvent(newEvent)
 			this.props.history.push('/events')
@@ -74,7 +69,7 @@ class EventForm extends Component {
 				<Grid.Column width={10}>
 					<Segment>
 						<Header sub color='teal' content='Event Details' />
-						<Form onSubmit={this.onFormSubmit}>
+						<Form onSubmit={this.props.handleSubmit(this.onFormSubmit)}>
 							<Field name='title' type='text' component={TextInput} placeholder='Give your event a name' />
 							<Field name='category' type='text' rows={3} component={SelectInput} options={category}  placeholder='What is your event about' />
 							<Field name='description' type='text' component={TextArea} placeholder='Tell us about your event' />
@@ -90,10 +85,8 @@ class EventForm extends Component {
 					</Segment>
 				</Grid.Column>
 			</Grid>
-
-
 		)
 	}
 }
 
-export default connect(mapState, actions)(reduxForm({form: 'eventForm'})(EventForm))
+export default connect(mapState, actions)(reduxForm({form: 'eventForm', enableReinitialize: true})(EventForm))
