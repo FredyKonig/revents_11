@@ -63,6 +63,8 @@ class TestComponent extends Component {
 				<Button onClick={incrementCounter} color='green' content='Increment' />
 				<Button onClick={decrementCounter} color='red' content='Decrement' />
 				<Button onClick={() => openModal('TestModal', {data: 43})} color='teal' content='Open Modal' />
+				<Button onClick={() => openModal('ModalOne', {data: 43})} color='teal' content='Modal One' />
+				<Button onClick={() => openModal('ModalTwo', {data: 43})} color='teal' content='Modal Two' />
 
 				<br/> <br/>
 
